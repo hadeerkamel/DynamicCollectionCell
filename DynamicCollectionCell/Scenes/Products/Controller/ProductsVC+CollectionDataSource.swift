@@ -18,4 +18,9 @@ extension ProductsVC: UICollectionViewDataSource{
         cell.data = products[indexPath.row]
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ProductDetailsVC()
+        vc.data = products[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
+    }
 }

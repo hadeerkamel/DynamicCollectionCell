@@ -22,6 +22,7 @@ class ProductsVC: UIViewController {
         super.viewDidLoad()
 
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.IDETIFIER)
 
         layout.delegate = self
