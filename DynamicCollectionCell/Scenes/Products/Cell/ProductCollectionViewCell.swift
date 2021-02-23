@@ -13,10 +13,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
     var data: Product?{
         didSet{
             guard let data = data else{return}
-            imageHeight = data.imageHeight
-            imageView.image = data.image
-            descLabel.text = data.description
-            priceLabel.text = data.price
+            imageHeight = CGFloat(data.image.height)
+            imageView.setImage(urlString: data.image.url)
+            descLabel.text = data.productDescription
+            priceLabel.text = "\(data.price)$"
         }
     }
     var imageHeight: CGFloat = 100
@@ -32,6 +32,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         setupViews()
     }
+   
     //MARK: - Setup Views -
     func setupViews(){
         contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -45,7 +46,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         //imageView.anchor(size: CGSize(width: 0, height: imageHeight))
         
         stackView.addSubview(priceLabel)
-        priceLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
+        priceLabel.anchor(top: stackView.topAnchor, trailing: stackView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10))
     }
     //MARK: - UI Components -
     let stackView: UIStackView = {
@@ -65,6 +66,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         label.text = "500$"
         label.font = label.font.withSize(13)
         label.textColor = .black
+        label.backgroundColor = .white
         return label
     }()
     let descLabel: UILabel = {

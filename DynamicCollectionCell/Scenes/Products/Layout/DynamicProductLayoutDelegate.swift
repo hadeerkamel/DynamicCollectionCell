@@ -23,12 +23,12 @@ extension ProductsVC: DynamicProductLayoutDelegate {
        // let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
         // insideRect : The bounding rectangle you want to fit into.
         //let rect = AVMakeRect(aspectRatio: image.size, insideRect: boundingRect)
-        return product.imageHeight
+        return CGFloat(product.image.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, heightForDescriptionAtIndexPath indexPath: IndexPath, withWidth width: CGFloat) -> CGFloat {
         let product = products[indexPath.item]
-        let descriptionHeight = heightForText(product.description, width: width-24)
+        let descriptionHeight = heightForText(product.productDescription, width: width-24)
         // 24 title //  15 subtitle // 8 top
         let height = 10 + descriptionHeight + 10
         return height

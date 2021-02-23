@@ -6,17 +6,12 @@
 //
 
 import UIKit
-struct Product{
-    let image: UIImage
-    let description: String
-    let price: String
-    let imageHeight: CGFloat
-}
 class ProductsVC: UIViewController {
 
     //MARK: - Properties -
     var products: [Product] = []
     let layout =  DynamicProductLayout()
+    var presenter: ProductsPresenter?
     //MARK: - Life cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +24,8 @@ class ProductsVC: UIViewController {
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.setCollectionViewLayout(layout, animated: true)
 
-        products = [
-            Product(image: #imageLiteral(resourceName: "result"), description: "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;kkkkkkkkkkkkkkllllllllllllllllllllllllllllllllllllllllllllllllllllllh", price: "500", imageHeight: 150),
-            Product(image: #imageLiteral(resourceName: "result"), description: "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkll", price: "500", imageHeight: 100),
-            Product(image: #imageLiteral(resourceName: "result"), description: "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkll", price: "500", imageHeight: 80),
-            Product(image: #imageLiteral(resourceName: "result"), description: "kkknmk;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkll", price: "500", imageHeight: 200)
-        ]
-
+        presenter = ProductsPresenterImpl(view: self)
+        presenter?.presentProducts()
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

@@ -7,5 +7,7 @@
 
 import Foundation
 class URLs{
-    static let baseURL = ""
+    static let baseURL = "https://aster.getsandbox.com/"
+
+    static let products = "products"
 }
