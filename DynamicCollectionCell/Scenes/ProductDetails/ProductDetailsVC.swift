@@ -13,7 +13,7 @@ class ProductDetailsVC: UIViewController {
         didSet{
             guard let data = data else{return}
             imageView.setImage(urlString: data.image.url)
-            priceLabel.text = String(data.price)
+            priceLabel.text = "\(data.price) $"
         }
     }
     //MARK: - Life cycle -
@@ -38,13 +38,14 @@ class ProductDetailsVC: UIViewController {
     //MARK: - UI Components -
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     let priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.backgroundColor = .white
-        label.font = label.font.withSize(15)
+        label.font = label.font.withSize(17)
         return label
     }()
 }
