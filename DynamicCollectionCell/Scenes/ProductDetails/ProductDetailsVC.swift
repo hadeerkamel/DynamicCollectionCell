@@ -12,8 +12,8 @@ class ProductDetailsVC: UIViewController {
     var data: Product?{
         didSet{
             guard let data = data else{return}
-           // imageView.image = data.image
-            //priceLabel.text = data.price
+            imageView.setImage(urlString: data.image.url)
+            priceLabel.text = String(data.price)
         }
     }
     //MARK: - Life cycle -
